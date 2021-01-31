@@ -1,0 +1,9 @@
+<div>
+        <h1>Login to your Account</h1>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+            <p>{{ form }}</p>
+            <button type="submit" class="btn btn-secondary">Log In</button>
+        </form>
+    </div>

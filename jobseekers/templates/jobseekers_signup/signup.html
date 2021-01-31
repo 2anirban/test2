@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Signup Page</h1>
+
+
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<form method="post" action="">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit">Sign up</button>
+</form>
+</html>
+
+</form>
+
+{% endblock %}

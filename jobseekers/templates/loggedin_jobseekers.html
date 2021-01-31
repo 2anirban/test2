@@ -1,0 +1,649 @@
+{% extends "loggedin_base.html" %}
+
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block content %}
+
+
+
+
+    <div class="row" style="margin:20px 0px;">
+      <div id="left_panel" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <div class="row box box-solid box-primary">
+          <div id="profile_pict" class="box-header col-md-12">
+            <img src='/{{ js.jseekers_pic }}' class='img-circle img-responsive' alt='Photo'>          </div>
+          <!-- ~~~~~~~~~~~~~~~~~~~ image upload ~~~~~~~~~~~~~~~~~~~ -->
+          <div id="change_img" class="dp-remove"><a href='#'>Change Picture</a></div>
+                    <div align="center" style="font-weight:bold;">Hi,
+            {{ js.jseekers_firstname }} {{ js.jseekers_lastname }}     </div>
+          <div id="img_modifier_div" style="display: none;">
+            <form name="frm_img_change" class="form-inline" method="post" action="" role="form" enctype="multipart/form-data">
+              <div class="form-group">
+                <input type="file" name="dp" id="dp" class="form-control">
+                <input type="hidden" name="old_dp" value="117_IMG20161211034220.jpg" />
+              </div>
+              <button type="submit" name="change_dp" id="change_dp" class="navbar-btn nav-button wow">Go</button>
+            </form>
+          </div>
+
+
+
+          <!-- ~~~~~~~~~~~~~~~~~~~ image upload ~~~~~~~~~~~~~~~~~~~ -->
+          <div class="big-button img-responsive" id="personal_btn" data-toggle="modal" data-target="#personal_data_modal">Personal Details <img src="https://www.urhired.co/assets/images/edit.png"></div>
+          <div class="big-button img-responsive" id="professional_btn" data-toggle="modal" data-target="#professional_data_modal">Professional Details <img src="https://www.urhired.co/assets/images/edit.png"></div>
+          <div class="big-button img-responsive" id="personal_btn" data-toggle="modal" data-target="#previous_job_modal">Add a Previous Job <img src="https://www.urhired.co/assets/images/edit.png"></div>
+          <div class="big-button img-responsive" id="educational_btn" data-toggle="modal" data-target="#educational_data_modal">Educational Details <img src="https://www.urhired.co/assets/images/edit.png"></div>
+          <div class="big-button img-responsive" id="other_info" data-toggle="modal" data-target="#otherinfo_data_modal">Other Info <img src="https://www.urhired.co/assets/images/edit.png"></div>
+        </div>
+      </div>
+      <div id="right_panel" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+
+
+
+
+
+        <!-- ~~~~~~~~~~~~~~~~~~~ Modal Begins ~~~~~~~~~~~~~~~~~~~ -->
+        <div class="modal fade" id="personal_data_modal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <form  class="form-horizontal" method="POST" action="" role="form">{% csrf_token %}
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Update Personal Information</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="profile_headline" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Profile Headline:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <textarea class="form-control" name="profile_headline" id="profile_headline" style="width: 100%;">{{  js.jseekers_headline }}</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_mobile" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Mobile No.:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="user_mobile" name="user_mobile" value="{{  js.jseekers_mobile }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_gender" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Gender:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <select name="user_gender" id="user_gender" class="form-control">
+                        <option value="">Choose</option>
+                        <option value='MALE' selected>Male</option><option value='FEMALE'>Female</option>    </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="user_location" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Location:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="user_location" name="user_location" value="{{  js.jseekers_location }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="other_info" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Other Information:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <textarea class="form-control" name="other_info" id="other_info" style="width: 100%;">{{ js.jseekers_otherinfo }}</textarea>
+                    </div>
+                  </div>
+                  <input type="hidden" name="personal_detail_area" id="personal_detail_area" value="">
+                </div>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button type="submit" name="personal_detail_edit_btn" id="personal_detail_edit_btn"  class="btn btn-default" data-dismiss="modal">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!---</form>--->
+          </div>
+        </div>
+        <div class="modal fade" id="professional_data_modal" role="dialog">
+          <div class="modal-dialog">
+            <!---<form name="frm_professional" class="form-horizontal" method="post" action="" role="form" enctype="multipart/form-data">-->
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Update Professional Information</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="industry" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Industry</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <select name='industry' id='industry' class='form-control'><option value=''>{{ js.jseekers_industry }}</option><option  value='BPO'>BPO</option><option value='Construction / Engineering / Cement / Metals'>Construction / Engineering / Cement / Metals</option><option value='7'>Consumer Durables</option><option value='10'>FMCG/Food/Beverages</option><option value='13'>IT Software</option><option value='14'>IT Hardware</option><option value='16'>KPO/Research & Analytics</option><option value='19'>Internet/Ecommerce</option><option value='26'>Strategy /Management Consulting Firms</option><option value='27'>Textiles / Garments / Accessories</option><option value='28'>Information Technology</option><option value='29'>Software Application/Web Development</option><option value='30'>Accounts</option><option value='31'>Medical & Healthcare</option></select>                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="functions" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Functions:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <select name='functions' id='functions' class='form-control'><option value=''>Select</option>
+					   <!---
+					  <option value='1'>{{ js.jseekers_functions }}</option>
+						  {% for funk in js.jseekers_functions %}
+					  <option value='1'>{{ funk }}</option>
+					   {% endfor %}
+				 -->
+
+					  <option value='1'>Accounting / Tax / Company Secretary / Audit</option>
+					  <option value='2'>Analytics & Business Intelligence</option>
+					  <option value='4'>Corporate Planning / Consulting / Strategy</option>
+					  <option value='5'>Entrepreneur / Businessman / Outside Management Consultant</option>
+					  <option value='7'>HR / Admin / PM / IR / Training</option>
+					  <option value='8'>ITES / BPO / Operations </option>
+					  <option value='10'>Medical Professional / Healthcare Practitioner / Technician</option>
+					  <option value='11'>Mktg / Advtg  Media Planning / PR / Corp. Comm</option>
+					  <option value='12'>R&D / Engineering Design</option>
+					  <option value='13'>Sales / Business Development / Client Servicing</option>
+					  <option value='14'>Software Development - ALL</option>
+					  <option value='15'>Software Development - Application Programming</option>
+					  <option value='16'>Software Development - Client Server</option>
+					  <option value='17'>Software Development - Database Administration</option>
+					  <option value='18'>Software Development - e-commerce / Internet Technologies</option>
+					  <option value='19'>Software Development - Embedded Technologies</option>
+					  <option value='20'>Software Development - ERP / CRM</option>
+					  <option value='21'>Software Development - Network Administration</option>
+					  <option value='24'>Top Management</option>
+					  <option value='25'>Others</option>
+					  <option value='26'>Customer Relation Management</option>
+					  <option value='27'>Finance & Accounting Operations </option>
+
+
+
+
+					  </select>       </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="work_experience" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Work Experience:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="work_experience" name="work_experience" value="{{ js.jseekers_workex }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="current_org" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Current Organization:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="current_org" name="current_org" value="{{ js.jseekers_currentorg }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="current_desg" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Current Designation:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="current_desg" name="current_desg" value="{{ js.jseekers_currentdesig}}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="current_desg" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Current CV:</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                            <a href="https://www.urhired.co/assets/resume/117_CV20161211034220.docx" download="download">Download CV</a>
+
+                      <a href="#" style="float:right;" id="upload_cv">[upload new CV]</a> </div>
+                  </div>
+                  <div class="form-group" id="upload_cv_div" style="display: none;">
+                    <label for="current_desg" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Upload new CV</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <div class="form-group">
+                        <input type="file" name="cv" id="cv" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="professional_detail_area" id="professional_detail_area" value="">
+                </div>
+                <div class="modal-footer">
+                  <button name="proff_detail_edit_btn" id="proff_detail_edit_btn"  class="btn btn-default" data-dismiss="modal">Edit</button>
+                </div>
+              </div>
+            <!--</form>--->
+          </div>
+        </div>
+
+        <!-- Modal for previous jobs -->
+        <!---<form name="frm_add_prev_job" class="form-horizontal" method="post" action="" role="form" >--->
+          <div class="modal fade" id="previous_job_modal" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Enter details of your previous job</h4>
+                </div>
+                <div class="modal-body">
+                  <div id="prev_jobs_err" class="alert alert-danger hide"></div>
+                  <div class="form-group">
+                    <label for="industry_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Industry</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <select name="industry_1" id="industry_1" class="form-control" required="">
+                        <option value="">Select</option>
+                        <option value='4'>BPO</option><option value='6'>Construction / Engineering / Cement / Metals</option><option value='7'>Consumer Durables</option><option value='10'>FMCG/Food/Beverages</option><option value='13'>IT Software</option><option value='14'>IT Hardware</option><option value='16'>KPO/Research & Analytics</option><option value='19'>Internet/Ecommerce</option><option value='26'>Strategy /Management Consulting Firms</option><option value='27'>Textiles / Garments / Accessories</option><option value='28'>Information Technology</option><option value='29'>Software Application/Web Development</option><option value='30'>Accounts</option><option value='31'>Medical & Healthcare</option>                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="function_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Function</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <select name="function_1" id="function_1" class="form-control" required="">
+                        <option value="">Select</option>
+                        <option value='1'>Accounting / Tax / Company Secretary / Audit</option><option value='2'>Analytics & Business Intelligence</option><option value='4'>Corporate Planning / Consulting / Strategy</option><option value='5'>Entrepreneur / Businessman / Outside Management Consultant</option><option value='7'>HR / Admin / PM / IR / Training</option><option value='8'>ITES / BPO / Operations </option><option value='10'>Medical Professional / Healthcare Practitioner / Technician</option><option value='11'>Mktg / Advtg  Media Planning / PR / Corp. Comm</option><option value='12'>R&D / Engineering Design</option><option value='13'>Sales / Business Development / Client Servicing</option><option value='14'>Software Development - ALL</option><option value='15'>Software Development - Application Programming</option><option value='16'>Software Development - Client Server</option><option value='17'>Software Development - Database Administration</option><option value='18'>
+Software Development - e-commerce / Internet Technologies
+</option><option value='19'>Software Development - Embedded Technologies</option><option value='20'>Software Development - ERP / CRM</option><option value='21'>Software Development - Network Administration</option><option value='24'>Top Management</option><option value='25'>Others</option><option value='26'>Customer Relation Management</option><option value='27'>Finance & Accounting Operations </option>                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="organization_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Organization</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" name="organization_1" id="organization_1" class="form-control" value="{{ js.jseekers_prev_org }}">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="designation_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Designation</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" name="designation_1" id="designation_1" class="form-control" value="{{ js.jseekers_prev_desig }}">
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="responsibilities_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Responsibilities</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <textarea id="responsibilities_1" name="responsibilities_1" class="form-control" >{{ js.jseekers_prev_responsibilities }}</textarea>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <label for="joining_date_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Joining Date</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="month" name="joining_date_1" id="joining_date_1" value="{{ js.jseekers_prev_joiningdate }}" >
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="releaving_date_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Releaving Date</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="month" name="releaving_date_1" id="releaving_date_1" required>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="summary_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Summary</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <textarea name="summary_1" id="summary_1" class="form-control">{{ js.jseekers_prev_summary }}</textarea>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                  <input type="hidden" name="prev_job_add_area" id="prev_job_add_area" value="">
+                  <div class="form-group">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <button name="prev_job_add_btn" id="prev_job_add_btn"  class="btn btn-default" data-dismiss="modal">Add Previous Job</button>
+                      <!--data-dismiss="modal"-->
+                    </div>
+                  </div>
+                  <div id="prev_job_loader" class="loader-user-info"> <img src="./img/loader.GIF"> </div>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!---</form>------->
+
+        <!-- previous_job_modal -->
+
+        <div class="modal fade" id="educational_data_modal" role="dialog">
+          <div class="modal-dialog">
+            <!---<form name="frm_educational" class="form-horizontal" method="post" action="" role="form">--->
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Update Educational Information</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="school_name" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">School</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="school_name" name="school_name" value="{{ js.jseekers_school }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="degree" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Degree</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="degree" name="degree" value="{{ js.jseekers_degree }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="dates_attended" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Dates Attended</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="date" class="form-control" id="dates_attended" name="dates_attended" value="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="field_of_study" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Field of study</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="field_of_study" name="field_of_study" value="{{js.jseekers_field_study}}">
+                    </div>
+                  </div>
+                  <input type="hidden" name="educational_detail_area" id="educational_detail_area" value="">
+                </div>
+                <div class="modal-footer">
+                  <button name="edu_detail_edit_btn" id="edu_detail_edit_btn" class="btn btn-default" data-dismiss="modal">Edit</button>
+                </div>
+              </div>
+            <!---</form>-->
+          </div>
+        </div>
+        <div class="modal fade" id="otherinfo_data_modal" role="dialog">
+          <div class="modal-dialog">
+            <!---<form name="frm_other" class="form-horizontal" method="post" action="" role="form">-->
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Update Other Information</h4>
+                </div>
+                <div class="modal-body">
+                  <!--<div class="form-group">
+                    <label for="change_reason" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Reason for change</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <textarea class="form-control" name="change_reason" id="change_reason" style="width: 100%;"></textarea>
+                    </div>
+                  </div>-->
+                  <div class="form-group">
+                    <label for="achievement" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Achievement</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="achievement" name="achievement" value="{{ js.jseekers_achievement }}">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="passion" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Passion</label>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <input type="text" class="form-control" id="passion" name="passion" value="{{ js.jseekers_passion }}">
+                    </div>
+                  </div>
+                  <input type="hidden" name="otherinfo_detail_area" id="otherinfo_detail_area" value="">
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" name="other_info_edit_btn" id="other_info_edit_btn" class="btn btn-default" data-dismiss="modal">Edit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- ~~~~~~~~~~~~~~~~~~~ Modal Ends ~~~~~~~~~~~~~~~~~~~ -->
+
+        <div class="panel panel-success">
+                  <div class="panel-heading" id="personel_info_heading">Personal Information</div>
+          <div class="panel-body" id="personel_info_content_area">
+            <h2>Profile Headline: </h2>
+            <div style = 'background-color:#F5F5F5; border-radius:10px; padding:10px;'></div>            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label for=""> Mobile No. : </label>
+              </div>
+              <div class="input-container"><input name="{{ js.jseekers_mobile  }} " id="mobile" maxlength="10" value="{{ js.jseekers_mobile  }} " class="user-success" type="text">
+                    </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label for=""> Gender : </label>
+              </div>
+              <div class="input-container">
+                {{ js.jseekers_gender }}      </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label for=""> Location : </label>
+              </div>
+              <div class="input-container">
+                    {{ js.jseekers_location }}         </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label for=""> Other Information : </label>
+              </div>
+              <div class="input-container">
+                {{ js.jseekers_otherinfo }}             </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading" id="professional_info_heading">Professional Detail</div>
+          <div class="panel-body">
+            <div class="sides">
+              <div class="label-container">
+                <label>Industry</label>
+              </div>
+              <div class="input-container">
+                     {{ js.jseekers_industry }}       </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Functions</label>
+              </div>
+              <div class="input-container">
+                      {{ js.jseekers_functions }}        </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Work Experience</label>
+              </div>
+              <div class="input-container">
+                     {{ js.jseekers_workex }}         </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Current Organization</label>
+              </div>
+              <div class="input-container">
+                 {{ js.jseekers_currentorg }}            </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Current Designation</label>
+              </div>
+              <div class="input-container">
+                {{ js.jseekers_currentdesig }}             </div>
+            </div>
+            <br />
+            <div class="sides">
+              <div class="label-container">
+                <label>Current CV</label>
+              </div>
+              <div class="input-container">
+                                <a href="https://www.urhired.co/assets/resume/117_CV20161211034220.docx" target="_blank" title="click to view current CV">
+                                117_CV20161211034220.docx                                </a>
+                              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="panel panel-success">
+          <div class="panel-heading" id="educational_info_heading">Educational Detail</div>
+          <div class="panel-body">
+            <div class="sides">
+              <div class="label-container">
+                <label>School Name</label>
+              </div>
+              <div class="input-container">
+                        {{ js.jseekers_school }}     </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Degree</label>
+              </div>
+              <div class="input-container">
+                     {{ js.jseekers_degree }}        </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Dates Attended</label>
+              </div>
+              <div class="input-container">
+                     {{ js.jseekers_datesattended  }}        </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Field of study</label>
+              </div>
+              <div class="input-container">
+			  {{ js.jseekers_field_study  }}
+                              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="panel panel-success">
+          <div class="panel-heading" id="other_info_heading">Other Information</div>
+          <div class="panel-body">
+            <!--<div class="sides">
+              <div class="label-container">
+                <label>Reason for change</label>
+              </div>
+              <div class="input-container">
+                              </div>
+            </div>-->
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Achievement</label>
+              </div>
+              <div class="input-container">
+                {{ js.jseekers_achievement  }}             </div>
+            </div>
+            <br>
+            <div class="sides">
+              <div class="label-container">
+                <label>Passion</label>
+              </div>
+              <div class="input-container">
+                    {{ js.jseekers_passion  }}        </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <form name="frm_prev_job_edit" id="frm_prev_job_edit" method="post" action="" >
+          <input type="hidden" name="prev_job_organization" id="prev_job_organization" value="" />
+          <input type="hidden" name="prev_job_designation" id="prev_job_designation" value="" />
+          <input type="hidden" name="prev_job_responsibilities" id="prev_job_responsibilities" value="" />
+          <input type="hidden" name="prev_job_summary" id="prev_job_summary" value="" />
+          <input type="hidden" name="prev_job_joining_date" id="prev_job_joining_date" value="" />
+          <input type="hidden" name="prev_job_releaving_date" id="prev_job_releaving_date" value="" />
+          <input type="hidden" name="prev_job_industry" id="prev_job_industry" value="" />
+          <input type="hidden" name="prev_job_function" id="prev_job_function" value="" />
+          <input type="hidden" name="prev_job_id" id="prev_job_id" value="" />
+          <input type="hidden" name="prev_job_area" id="prev_job_area" value="prev_job_area" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script language="javascript">
+function frm_prev_job_edit_submit(prev_job_id)
+{
+	prev_job_organization = document.getElementById("prev_job_organization_"+prev_job_id).value;
+	prev_job_designation = document.getElementById("prev_job_designation_"+prev_job_id).value;
+	prev_job_responsibilities = document.getElementById("prev_job_responsibilities_"+prev_job_id).value;
+	prev_job_summary = document.getElementById("prev_job_summary_"+prev_job_id).value;
+	prev_job_joining_date = document.getElementById("prev_job_joining_date_"+prev_job_id).value;
+	prev_job_releaving_date = document.getElementById("prev_job_releaving_date_"+prev_job_id).value;
+	prev_job_industry = document.getElementById("prev_job_industry_"+prev_job_id).value;
+	prev_job_function = document.getElementById("prev_job_function_"+prev_job_id).value;
+
+/*	alert(prev_job_organization);
+	alert(prev_job_designation);
+	alert(prev_job_responsibilities);
+	alert(prev_job_summary);
+	alert(prev_job_joining_date);
+	alert(prev_job_releaving_date);
+	alert(prev_job_industry);
+	alert(prev_job_function);
+
+*/	try{
+	document.getElementById("prev_job_organization").value = prev_job_organization;
+	document.getElementById("prev_job_designation").value = prev_job_designation;
+	document.getElementById("prev_job_responsibilities").value = prev_job_responsibilities;
+	document.getElementById("prev_job_summary").value = prev_job_summary;
+	document.getElementById("prev_job_joining_date").value = prev_job_joining_date;
+	document.getElementById("prev_job_releaving_date").value = prev_job_releaving_date;
+	document.getElementById("prev_job_industry").value = prev_job_industry;
+	document.getElementById("prev_job_function").value = prev_job_function;
+
+	document.getElementById("prev_job_id").value = prev_job_id;
+
+	document.getElementById("frm_prev_job_edit").submit();
+}catch(e){alert(e);}
+	//
+}
+</script>
+<script>
+    $(document).ready(function () {
+        $("#personel_info_heading,#professional_info_heading,#educational_info_heading,#other_info_heading,#previous_jobs_heading").click(function () {
+            $(this).next().slideToggle("slow");
+        });
+
+        $("#personal_detail_edit_btn").click(function () {
+            $("#personal_detail_area").val('personal_detail');
+            document.frm_personal.submit();
+        });
+        $("#proff_detail_edit_btn").click(function () {
+            $("#professional_detail_area").val('professional_detail');
+            document.frm_professional.submit();
+        });
+        $("#prev_job_add_btn").click(function () {
+            $("#prev_job_add_area").val('prev_job_detail');
+            document.frm_add_prev_job.submit();
+        });
+        $("#edu_detail_edit_btn").click(function () {
+            $("#educational_detail_area").val('educational_detail');
+            document.frm_educational.submit();
+        });
+        $("#other_info_edit_btn").click(function () {
+            $("#otherinfo_detail_area").val('otherinfo_detail');
+            document.frm_other.submit();
+        });
+
+		 $("#change_img").click(function () {
+            $("#img_modifier_div").slideToggle("slow");
+        });
+		$("#upload_cv").click(function () {
+            $("#upload_cv_div").slideToggle("slow");
+        });
+
+    });
+</script>
+<script>
+setTimeout(function () {
+          $("#flash_msg").hide(700);
+          }, 3500);
+</script>
+
+<script type="text/javascript" src="https://www.urhired.co/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,325 @@
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+{% for foempAll in foempall %}
+
+
+{{ foempAll.employers_firstname }}<br>
+{{ foempAll.employers_ }}<br>
+{{ foempAll.employers_lastname }}<br>
+{{ foempAll.employers_pic}}<br>
+{{ foempAll.employers_headline }}<br>
+{{ foempAll.employers_mobile }}<br>
+{{ foempAll.employers_location }}<br>
+{{ foempAll.employers_otherinfo }}<br>
+{{ foempAll.employers_industry }}<br>
+{{ foempAll.employers_functions }}<br>
+{{ foempAll.employers_workex }}<br>
+{{ foempAll.employers_currentorg }}<br>
+{{ foempAll.employers_currentdesig }}<br>
+{{ foempAll.employers_prev_industry }}<br>
+{{ foempAll.employers_prev_functions }}<br>
+{{ foempAll.employers_prev_org }}<br>
+{{foempAll.employers_prev_desig }}<br>
+{{foempAll.employers_prev_responsibilities }}<br>
+{{ foempAll.employers_prev_joiningdate }}<br>
+{{ foempAll.employers_prev_relievingdate }}<br>
+{{foempAll.employers_prev_summary }}<br>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>ur hired</title>
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet' type='text/css'>
+   <link href="https://www.urhired.co/assets/css/bootstrap.min.css" rel="stylesheet">
+   <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   <link href="https://www.urhired.co/assets/css/font-awesome.min.css" rel="stylesheet">
+   <link href="https://www.urhired.co/assets/css/style.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://www.urhired.co/assets/css/custom.css">
+   <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
+   <script>
+            webshims.setOptions('forms-ext', {types: 'date'});
+            webshims.polyfill('forms forms-ext');
+   </script>
+   </head>
+   <body>
+   <header class="main-header">
+     <div class="container">
+       <div class="row">
+         <div class="col-md-2 col-sm-2 logo">
+         <a href="https://www.urhired.co/">
+         <img src="https://www.urhired.co/assets/images/logo.jpg" width="66" height="61" alt="ur hired">
+         </a></div>
+         <div class="col-md-8 col-sm-8">
+           <nav class="navbar navbar-default">
+             <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+               <a class="navbar-brand" href="#bs-example-navbar-collapse-1" data-toggle="collapse">MENU</a> </div>
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                                  <li><a href="https://www.urhired.co/blog">Blog</a></li>
+                                                   <li class="active"><a href="https://www.urhired.co/jobseekers/jobseeker_profile">My profile</a></li>
+                 <li class="active"><a href="https://www.urhired.co/home/change_password">Change Password</a></li>
+                                                   <li class="active"><a href="https://www.urhired.co/logout">Sign Out</a></li>
+                                </ul>
+             </div>
+           </nav>
+         </div>
+         <div class="col-md-2 col-sm-2">
+           <ul class="social">
+             <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+             <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+             <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </header>
+<hr class="green">
+<div class="container">
+  <div class="content-area">
+     
+<div class="nav-area">
+      <div class="row">
+        <div class="col-md-8">
+          <nav class="secondary-nav">
+            <ul>
+                          <li class="active"><a href="https://www.urhired.co/jobseekers/follow_employer">Follow Employer</a></li>
+              <li ><a href="https://www.urhired.co/jobseekers/follow_headhunter">Follow Headhunters</a></li>
+              <li ><a href="https://www.urhired.co/jobseekers/jobfeed">Jobfeed</a></li>
+              <li ><a href="https://www.urhired.co/jobseekers/following">Following</a></li>
+              <li ><a href="https://www.urhired.co/jobseekers/new_updates">New Updates</a></li>
+               
+            </ul>
+          </nav>
+        </div>
+        <form action="https://www.urhired.co/home/search_employer" method="post">
+        <div class="col-md-3 col-sm-6">
+          <div class="input-group stylish-input-group">
+            <input type="text" name="sr_query" class="form-control" value=""  placeholder="Search" >
+            <span class="input-group-addon">
+            <button type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
+        </div>
+        <div class="col-md-1">
+          <button type="submit" name="search" value="search" class="btn btn-success pull-right">Search</button>
+        </div>
+        </form>
+      </div>
+    </div>        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+        <thead>
+          <tr class="active">
+            <th>&nbsp;</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Industry</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/47">
+            <img src="https://www.urhired.co/assets/DP/" width="68" height="68" alt="Rupal" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/47" class="green-text">{{ foempAll.employers_firstname }} {{ foempAll.employers_lastname }}</a>
+            </td>
+            <td>{{ foempAll.employers_currentdesig }}</td>
+            <td>{{ foempAll.employers_currentorg }}</td>
+            <td>{{ foempAll.employers_location }}</td>
+            <td>{{ foempAll.employers_industry }}</td>
+            <td><a href='https://www.urhired.co/jobseekers/start_follow/Rupal Shaikh/47' id='followBtn' class='btn btn xs btn-success'>Follow</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/52">
+            <img src="https://www.urhired.co/assets/DP/52_20161019095656.jpg" width="68" height="68" alt="Soumen" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/52" class="green-text">Soumen Naskar</a>
+            </td>
+            <td>TL</td>
+            <td>TCS</td>
+            <td>Kolkata</td>
+            <td>BPO</td>
+            <td><a href='#' id='followBtn' class='btn btn xs btn-success' disabled>Following</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/120">
+            <img src="https://www.urhired.co/assets/DP/120_IMG20161215093110.jpg" width="68" height="68" alt="Krish" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/120" class="green-text">Krish Naskar</a>
+            </td>
+            <td>PM</td>
+            <td>Cognizent</td>
+            <td>Gurgaon</td>
+            <td>IT Software</td>
+            <td><a href='https://www.urhired.co/jobseekers/start_follow/Krish Naskar/120' id='followBtn' class='btn btn xs btn-success'>Follow</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/121">
+            <img src="https://www.urhired.co/assets/DP/121_IMG20170120083730.jpg" width="68" height="68" alt="Anirban" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/121" class="green-text">Anirban Dutta</a>
+            </td>
+            <td>Founder</td>
+            <td>URHIRED</td>
+            <td>Gurgaon</td>
+            <td>BPO</td>
+            <td><a href='#' id='followBtn' class='btn btn xs btn-success' disabled>Following</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/125">
+            <img src="https://www.urhired.co/assets/DP/125_IMG20170629101109.jpg" width="68" height="68" alt="Soumen" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/125" class="green-text">Soumen Naskar</a>
+            </td>
+            <td>SM</td>
+            <td>TCS</td>
+            <td>Pune</td>
+            <td>IT Software</td>
+            <td><a href='https://www.urhired.co/jobseekers/start_follow/Soumen Naskar/125' id='followBtn' class='btn btn xs btn-success'>Follow</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/141">
+            <img src="https://www.urhired.co/assets/DP/" width="68" height="68" alt="avijit" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/141" class="green-text">avijit sarkar</a>
+            </td>
+            <td>xzxz</td>
+            <td>xxz</td>
+            <td>Chennai</td>
+            <td>FMCG/Food/Beverages</td>
+            <td><a href='https://www.urhired.co/jobseekers/start_follow/avijit sarkar/141' id='followBtn' class='btn btn xs btn-success'>Follow</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/143">
+            <img src="https://www.urhired.co/assets/DP/143_DP20170709123955.jpg" width="68" height="68" alt="Anirban" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/143" class="green-text">Anirban Dutta</a>
+            </td>
+            <td>dfdf</td>
+            <td>cx</td>
+            <td>Pune</td>
+            <td>Strategy /Management Consulting Firms</td>
+            <td><a href='https://www.urhired.co/jobseekers/start_follow/Anirban Dutta/143' id='followBtn' class='btn btn xs btn-success'>Follow</a></td>
+          </tr>
+                  <tr>
+            <td width="86">
+            <a href="https://www.urhired.co/jobseekers/follow_details/146">
+            <img src="https://www.urhired.co/assets/DP/146_IMG20170709123146.jpg" width="68" height="68" alt="Anirban" class='img-circle img-responsive'>
+            </a>
+            </td>
+            <td>
+            <a href="https://www.urhired.co/jobseekers/follow_details/146" class="green-text">Anirban Dutta</a>
+            </td>
+            <td>Senior engineer</td>
+            <td>Test</td>
+            <td>Gurgaon</td>
+            <td>Textiles / Garments / Accessories</td>
+            <td><a href='#' id='followBtn' class='btn btn xs btn-success' disabled>Following</a></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+      </div>
+</div><footer>
+	<div class="ash-bg">
+    	<div class="container">
+        	<div class="row">
+            	<article class="col-md-3 col-sm-4">
+                	<h3>About Us</h3>
+                    <p>URHired is a market place for jobseekers and Talent Acquisition professionals @ leadership level.The Pareto Principle states that 
+80% of consequences stem from 20% of the causes. Hence it makes a lot of sense to find the top 20 % talents in a given market and try to "make ding in the Universe"..ala Steve Jobs...We are thriving to do that..We are really excited and committed on this endeavour..Big shout to our candidates and Clients also..Make it Rain :)</p>
+                </article><div class="col-md-4 col-md-offset-1 col-sm-4"></div>
+                <!--<div class="col-md-4 col-md-offset-1 col-sm-4">
+                	<h3>Recent Blog Posts</h3>
+                  <article>
+                   	<h5>Preparing for Interview</h5>
+                        <p class="date">06.03.2016 by Admin</p>
+                    <p>adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem </p>
+                    <a href="#" class="read-more">Read More</a>
+                    </article>
+                    <article>
+                   	<h5>Preparing for Interview</h5>
+                        <p class="date">06.03.2016 by Admin</p>
+                    <p>adipisicing elit. Obcaecati architecto quaerat facere blanditiis tempora sequi nulla accusamus, possimus cum necessitatibus suscipit quia autem </p>
+                    <a href="#" class="read-more">Read More</a>
+                    </article>
+                </div>-->
+                <div class="col-md-3 col-md-offset-1 col-sm-4">
+                	<h3>Useful Links</h3>
+                    <nav>
+                    <ul>
+                    	<li><a href="https://www.urhired.co/">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="https://www.urhired.co/blog">Blog</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="https://www.urhired.co/employers">Employers</a></li>
+                        <li><a href="https://www.urhired.co/headhunters">Headhunters</a></li>
+                        <li><a href="https://www.urhired.co/jobseekers">Jobseekers</a></li>
+                    </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="black-bg">
+    	<div class="container">
+        <div class="row">
+        	<div class="col-md-9 col-sm-9">
+                <ul class="foot-nav">
+                    <li>All rights reserved @ 2018 <a href="#">urhired.co</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy policiy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-3">
+            	<ul class="social">
+                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="https://www.urhired.co/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endfor %}

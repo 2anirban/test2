@@ -1,0 +1,260 @@
+/*  ~~~~~~~~~~~~~~~~~~~~~~ Common Styles (Begins) ~~~~~~~~~~~~~~~~~~~~~~  */
+.hide{
+    display:none;
+}
+/*.btn{
+    background-color: #000;
+    height: 32px;
+    color: #FFF;
+}*/
+.hint-txt{
+    color: green;
+    font-size:10px;
+}
+.error-txt{
+    color:red;
+    font-size: 12px;
+}
+.error-msg{
+    width:auto;
+    height: 20px;
+    background-color: #fc9;
+    color: red;
+    padding: 5px 10px;
+    margin-bottom:10px;
+    border:2px solid red;
+}
+.alert-msg{
+    width:auto;
+    height: 20px;
+    background-color: #F0FFFF;
+    color: #008000;
+    padding: 5px 10px;
+    margin-bottom:10px;
+    border:2px solid #008000;
+    display:none;
+}
+.read-only-txtbox{
+    background-color: #F0F0F0;
+}
+/*  ~~~~~~~~~~~~~~~~~~~~~~ Common Styles (Ends) ~~~~~~~~~~~~~~~~~~~~~~~~  */
+
+
+
+
+/*--------------- login.php (Begins) -----------------*/
+
+/*#header{
+    background-color:#C2C2C2;
+    height:15px;
+    color:green;
+}*/
+.login-box{
+    float:right;
+    width:29%;
+    margin-top:100px;
+    margin-right:20px;
+    background-color: #C2C2C2;
+    border-radius: 0px;
+    padding:15px;
+    color:green;
+}
+
+/*--------------- login.php (Ends)-----------------*/
+
+/*----------------- signup.php (Begins) ----------------- */
+.signup-box{
+    margin-top:100px;
+    background-color: #C2C2C2;
+    border-radius: 0px;
+    float: right;
+    margin-right: 4%;
+    width: 420px;
+    color:#4D944D;
+}
+label {
+    float:left;
+    padding-right:12px;
+    font-weight: bold;
+}
+.sides{
+    margin:3px;
+    padding:10px;
+}
+.label-container{
+    float:left;
+    width: 42%;
+    height: 30px;
+}
+.input-container{
+    float:left;
+    width:58%;
+}
+.input-box{
+    height:30px;
+    padding-left:6px;
+}
+
+
+/*----------------- signup.php (Ends) ----------------- */
+#tab_container{
+    float:left;
+    width:15%;
+    margin: 5px;
+    text-align:center;
+
+}
+
+.tab{
+    background-color: blue;
+    border-radius:10px;
+    height:55px;
+    margin:5%;
+    padding:20px;
+    width:55%;
+    cursor: pointer;	
+}
+.active-tab{
+    background-color: yellow;
+    border: 1px solid #000;
+    font-size: 20px;
+}
+.content_area
+{
+    margin-left:450px;
+    padding:10px;
+    margin-top:-730px;
+    color:#0033CC;
+    border: 3px solid #000;
+    border-radius: 6px;
+    min-height:650px;
+    width: 63%;
+}
+#profile_headline{
+    height:80px;
+    width:65%;
+    border:1px solid #f0f0f0;
+    background-color: #FCFCFC;
+}
+.label_container{
+    float:left;
+    width:40%;
+}
+.input_container{
+    float:left;
+    width:60%;	
+}
+.parent_div{
+    margin-top:1px;
+    background-color: lightgoldenrodyellow;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    color:green;
+    height: 250px;
+    border-radius: 8px;
+}
+.sides{
+    margin:3px;
+    padding:10px;
+}
+/*~~~~~~~~ user_info.php ~~~~~~~~~~~~~~ */
+#left_panel{
+    width: 24%;
+    float: left;
+    border: 0px solid #000;
+}
+#right_panel{
+    width: 75%;
+    float:left;
+}
+.user-info-content-area{
+    color:#0FBA6F;
+    border: 2px solid #f9f9f9;
+    padding-top: 5px;
+}
+.title-bar{
+    width:100%;
+    height:30px;
+    background-color: #F0F0F0;
+}
+.title-bar div{
+    padding:5px 10px;
+    padding: 5px 10px;
+    color: #4D944D;
+    font-weight: bold;
+}
+.user-info-box{
+    padding: 1% 4%;
+}
+.loader-user-info{
+    z-index: 101;
+    position: absolute;
+    margin-top: -237px;
+    margin-left: 130px;
+    display: none;
+}
+.previous-job-loader{
+    z-index: 101;
+    position: absolute;
+    display: none;
+}
+.info-indicator{
+    width: 90%;
+    background-color: azure;
+    height: 100px;
+    margin-bottom: 10px;
+    /*cursor: pointer;*/
+}
+.info-indicator-inner{
+    margin: 0px auto;
+    padding-top: 38px;
+    font-weight: bold;
+    color: #008000;
+    text-align: center;
+}
+.info-indicator-active{
+    width: 90%;
+    background-color: #F0F0F0;
+    height: 100px;
+    margin-bottom: 10px;
+    color:orange;
+    box-shadow: 10px 10px 5px #888888;
+
+}
+#registration_success_msg{
+    width: 64%;
+    height:200px;
+    background-color: #F0FFFF;
+    border: 2px solid #008000;
+    padding: 25px;
+    /*margin: 10% 0%;*/
+    margin: auto;
+    color:#008000;
+    text-align: center;
+    font-weight: bold;
+    /*display: none;*/
+}
+#prev_job_data{
+    background-color: #fff;
+    padding: 10px 25px;
+    margin-bottom: 10px;
+    height:auto;
+}
+
+.prev_job_innerdata{
+    background-color: #f0ffff;
+    border-radius: 25px;
+    height: auto;
+    overflow: auto;
+    padding: 20px;
+}
+/* ~~~~~~~~~~~~~~ jobseekers.php ~~~~~~~~~~~~~~ */
+
+
+/* ~~~~~~~~~~~~~~ added on 21-03-16 ~~~~~~~~~~~~~~ */
+
+.input_medium
+{
+	width: 	50%;
+}

@@ -1,0 +1,53 @@
+
+{% extends "signup_base.html" %}
+
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block content %}
+
+<!--//==========================For Hidden Field======================================================--->
+ <input type="hidden" value="" id="hide_personal_info">
+ <input type="hidden" value="0" id="hide_proff_info">
+  <input type="hidden" value="" id="hide_edu_info">
+ <input type="hidden" value="" id="hide_other_info">
+<!--//===============================================================================================/-->
+<hr class="green">
+<div class="content-area">
+  <div class="container">
+    <div id="user_info_parent">
+      <div id="left_panel">
+        <div id='personal_info_box' class='info-indicator'><div class='info-indicator-inner'>Personal Information<a href='https://www.urhired.co/jobseekers/jobseeker_info/1'><img id='personal_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>
+          <div id='professional_info_box' class='info-indicator'><div class='info-indicator-inner'>Professional Detail <a href='https://www.urhired.co/jobseekers/jobseeker_info/2'><img id='proff_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>
+          <div id='educational_info_box' class='info-indicator'><div class='info-indicator-inner'>Education Information <a href='https://www.urhired.co/jobseekers/jobseeker_info/3'><img id='education_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>
+          <div id='other_info_box' class='info-indicator-active'><div class='info-indicator-inner'>Other Information <a href='https://www.urhired.co/jobseekers/jobseeker_info/4'><img id='other_info_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>      </div>
+      <div id="right_panel">
+        <div class='text-center'><h2>Let's complete your profile!</h2></div><div id='flash_msg'class='' role='alert'></div>
+        <div id='personal_detail' class='user-info-content-area'><div class='title-bar'><div>Enter Your Personal Detail</div></div>
+
+           <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+               <input type="file" name="myfile">
+
+    <input type='submit' value='Save Personal Information' >
+
+</form>
+            </div>
+          </div>
+        </div>
+        <!-- previous_job_modal -->
+
+      </div>
+      <!-- right panel -->
+    </div>
+    <!--user_info_parent -->
+  </div>
+</div>
+
+<script type="text/javascript" src="https://www.urhired.co/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% endblock %}

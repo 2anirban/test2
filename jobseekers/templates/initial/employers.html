@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+
+
+
+
+                {% block content %}
+
+       <hr class="green">
+    <div class="container">
+   	  <div class="jobseekers">
+      	<h1>Jobseeker</h1>
+
+        <div class="row">
+           <div class="modal fade" id="forgot_password_modal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <form name="frm_forgot_password" class="form-horizontal" method="post" action="https://www.urhired.co/home/forgot_password" role="form">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Forgot Password ? Give your valid Email id for new one</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="Email_id" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Email Id:</label>
+                        <input type="email" class="" id="email" name="email" placeholder="Email*">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button type="submit" name="forgot_btn" id="forgot_btn"  value="Submit" class="btn btn-default">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+        	 <div class="col-md-6 col-sm-6">
+            	<h2>Sign up as Employers</h2>
+                <form role="form" id="signupForm" method="post" action="#">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <input type="text" class="form-control" autofocus required id="id_username" maxlength="100" required name="username" placeholder="username">
+                    <p>What mother calls you!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="id_first_name" maxlength="100" required name="first_name" placeholder="First Name*">
+                    <p>What mother calls you!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="id_last_name" maxlength="100" required name="last_name" placeholder="Last Name*">
+                    <p>What colegues call you. Well at times!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" required  id="id_email" name="email"  placeholder="Email*">
+                    <p>It's also sign in name. has to be legit!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" required id="id_password1" name="password1" placeholder="Password*">
+                    <p>Something you'll remember but hard to guess;</p>
+                  </div>
+                   <div class="form-group">
+                    <input type="password" class="form-control" required id="id_password2" name="password2" placeholder="Retype Password*">
+                    <p>Type it again; Think of it as game!</p>
+                  </div>
+                  <button type="submit" name="submit" value="register" class="btn btn-success">Register Now</button>
+                </form>
+            </div>
+              <div class="col-md-6 col-sm-6">
+            	<div class="login-area">
+                	<h3>Login as Jobseeker</h3>
+                     <form role="form" action="https://www.urhired.co/jobseekers/login" method="post">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email*">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password*">
+                      </div>
+                      <div class="row">
+                      	<div class="col-md-6 col-sm-6">
+                        <a href="#" data-toggle="modal" data-target="#forgot_password_modal"  style="color:white"; }>Forgot password ?</a>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                        	<button type="submit" name="submit" value="login" class="btn btn-default">Log in Now</button>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Signup Page</h1>
+{% if error %}
+
+{{ error }}
+
+{% endif %}
+
+
+<form method="post" action="#">
+{% csrf_token %}
+<p><label for="id_username">Username:</label> <input type="text" name="username" maxlength="150" autofocus required id="id_username" /> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+<p><label for="id_first_name">first_name:</label> <input type="text" name="first_name" maxlength="100" required id="id_first_name" /></p>
+<p><label for="id_last_name">last_name:</label> <input type="text" name="last_name" maxlength="100" required id="id_last_name" /></p>
+<p><label for="id_email">email:</label> <input type="email" name="email" required id="id_email" /></p>
+<p><label for="id_password1">Password:</label> <input type="password" name="password1" required id="id_password1" /> <span class="helptext"><ul><li>Your password can&#39;t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can&#39;t be a commonly used password.</li><li>Your password can&#39;t be entirely numeric.</li></ul></span></p>
+<p><label for="id_password2">Password confirmation:</label> <input type="password" name="password2" required id="id_password2" /> <span class="helptext">Enter the same password as before, for verification.</span></p>
+<button type="submit">Sign up</button>
+
+
+</form>
+
+
+</form>
+
+{% endblock %}

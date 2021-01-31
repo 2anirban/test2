@@ -1,0 +1,229 @@
+
+{% extends "signup_base.html" %}
+
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block content %}
+
+<!--//==========================For Hidden Field======================================================--->
+ <input type="hidden" value="" id="hide_personal_info">
+ <input type="hidden" value="0" id="hide_proff_info">
+  <input type="hidden" value="" id="hide_edu_info">
+ <input type="hidden" value="" id="hide_other_info">
+<!--//===============================================================================================/-->
+<hr class="green">
+<div class="content-area">
+  <div class="container">
+    <div id="user_info_parent">
+      <div id="left_panel">
+        <div id='personal_info_box' class='info-indicator'><div class='info-indicator-inner'>Personal Information<a href=''><img id='personal_edit' src='' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>
+
+          <div id='professional_info_box' class='info-indicator-active'><div class='info-indicator-inner'>Professional Detail <a href=''><img id='proff_edit' src='' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div><div id='educational_info_box' class='info-indicator'><div class='info-indicator-inner'>Education Information <a href=''><img id='education_edit' src='' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div><div id='other_info_box' class='info-indicator'><div class='info-indicator-inner'>Other Information <a href=''><img id='other_info_edit' src='' width='15' height='15' border='0' alt='U R Hired' class='hide'></a></div></div>      </div>
+      <div id="right_panel">
+        <div class='text-center'><h2>Let's complete your profile!</h2></div><div id='flash_msg'class='' role='alert'></div>
+        <div id='personal_detail' class='user-info-content-area'><div class='title-bar'><div>Enter Your Personal Detail</div></div>
+
+           <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type='submit' value='Save Personal Information' >
+
+</form>
+
+            </div>
+          </div>
+        </div>
+        <!-- previous_job_modal -->
+
+      </div>
+      <!-- right panel -->
+    </div>
+    <!--user_info_parent -->
+  </div>
+</div>
+<script src=""></script>
+<script>
+setTimeout(function () {
+          $("#flash_msg").hide(700);
+          }, 3500);
+
+$(document).ready(function () {
+
+		$('#frm_personel_info').submit(function () {
+			var errorFlag = false;
+			if ($("#candidate_number").val() === ""  || ( isNaN($("#candidate_number").val()) || $("#candidate_number").val().length<10 )) {
+                $("#candidate_number_err").removeClass("hide");
+                $("#candidate_number").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#candidate_number_err").addClass("hide");
+                $("#candidate_number").css("border", "1px solid #f0f0f0");
+            }
+
+			if ($("#candidate_location").val() === "") {
+                $("#candidate_location_err").removeClass("hide");
+                $("#candidate_location").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#candidate_location_err").addClass("hide");
+                $("#candidate_location").css("border", "1px solid #f0f0f0");
+            }
+
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+
+		});
+		$('#frm_professional_info').submit(function () {
+            var errorFlag = false;
+            if ($("#industry").val() === "") {
+                $("#industry_err").removeClass("hide");
+                $("#industry").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#industry_err").addClass("hide");
+                $("#industry").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#functions").val() === "") {
+                $("#functions_err").removeClass("hide");
+                $("#functions").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#functions_err").addClass("hide");
+                $("#functions").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#work_expr").val() === ""  || isNaN($("#work_expr").val()) ) {
+                $("#work_expr_err").removeClass("hide");
+                $("#work_expr").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#work_expr_err").addClass("hide");
+                $("#work_expr").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#organization").val() === "") {
+                $("#organization_err").removeClass("hide");
+                $("#organization").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#organization_err").addClass("hide");
+                $("#organization").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#designation").val() === "") {
+                $("#designation_err").removeClass("hide");
+                $("#designation").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#designation_err").addClass("hide");
+                $("#designation").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#joining_date").val() === "") {
+                $("#joining_date_err").removeClass("hide");
+                $("#joining_date").next().css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#joining_date_err").addClass("hide");
+                $("#joining_date").next().css("border", "1px solid #f0f0f0");
+            }
+
+			if ($("#releaving_date").val()!="" && ($("#releaving_date").val() < $("#joining_date").val())){
+				$("#joining_date_err").removeClass("hide");
+                $("#joining_date").next().css("border", "1px solid red");
+                errorFlag = true;
+			} else{
+				$("#joining_date_err").addClass("hide");
+                $("#joining_date").next().css("border", "1px solid #f0f0f0");
+			}
+
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+		$('#add_prev_job_1').click(function () {
+            var errorMsg = new Array();
+            if ($("#industry_1").val() === "") {
+                errorMsg.push("Select Industry of your job!");
+            }
+            if ($("#function_1").val() === "") {
+                errorMsg.push("Select function of your job!");
+            }
+            if ($("#organization_1").val() === "") {
+                errorMsg.push("Put name of your previous organization!");
+            }
+            if ($("#designation_1").val() === "") {
+                errorMsg.push("Write about your designation in your previous organization!");
+            }
+            if ($("#joining_date_1").val() === "") {
+                errorMsg.push("Enter date of joining!");
+            }
+            if ($("#releaving_date_1").val() === "") {
+                errorMsg.push("Enter date of releaving!");
+            }
+			if($("#releaving_date_1").val() < $("#joining_date_1").val()){
+				errorMsg.push("Enter proper date of releaving!");
+			}
+            if (errorMsg.length > 0) {
+                $("#prev_jobs_err").html(" ");
+                $("#prev_jobs_err").removeClass("hide");
+                for (var i = 0; i < errorMsg.length; i++) {
+                    $("#prev_jobs_err").append(errorMsg[i] + "<br>");
+                }
+                return false;
+            } else {
+                return true;
+            }
+        });
+		$('#frm_upload').submit(function(){
+			var errorFlag = false;
+			if ($("#hide_personal_info").val() === "") {
+                alert('please provide your Mobile No. and Location');
+			    errorFlag = true;
+            }
+			if ($("#hide_proff_info").val() < 1) {
+                alert('please provide your proper Professional details');
+                errorFlag = true;
+            }
+			/*if ($("#hide_edu_info").val() < 1) {
+                alert('please provide your proper Educational details');
+                errorFlag = true;
+            }
+			if ($("#hide_other_info").val() < 1) {
+                alert('please provide your proper Other details');
+                errorFlag = true;
+            }*/
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+
+		});
+
+        $('#working_with_current_org').change(function () {
+            var current_job_status = $("#working_with_current_org").is(':checked');
+            //alert(current_job_status);
+            if (current_job_status === true) {
+                $("#releaving_date").val("");
+                $("#releaving_date").attr("disabled", true);
+            } else {
+                $("#releaving_date").removeAttr("disabled");
+            }
+        });
+     });
+</script>
+<script type="text/javascript" src=""></script>
+  </body>
+</html>
+
+{% endblock %}

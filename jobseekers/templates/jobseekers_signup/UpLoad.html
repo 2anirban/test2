@@ -1,0 +1,307 @@
+{% extends "signup_base.html" %}
+
+
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block content %}
+<!--//==========================For Hidden Field======================================================--->
+ <input type="hidden" value="8588049606" id="hide_personal_info">
+ <input type="hidden" value="12" id="hide_proff_info">
+  <input type="hidden" value="" id="hide_edu_info">
+ <input type="hidden" value="" id="hide_other_info">
+<!--//===============================================================================================/-->
+<hr class="green">
+<div class="content-area">
+  <div class="container">
+    <div id="user_info_parent">
+      <div id="left_panel">
+        <div id='personal_info_box' class='info-indicator'><div class='info-indicator-inner'>Personal Information <a href='https://www.urhired.co/jobseekers/jobseeker_info/1'><img id='personal_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' ></a></div></div><div id='professional_info_box' class='info-indicator'><div class='info-indicator-inner'>Professional Detail <a href='https://www.urhired.co/jobseekers/jobseeker_info/2'><img id='proff_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' ></a></div></div><div id='educational_info_box' class='info-indicator'><div class='info-indicator-inner'>Education Information <a href='https://www.urhired.co/jobseekers/jobseeker_info/3'><img id='education_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' ></a></div></div><div id='other_info_box' class='info-indicator'><div class='info-indicator-inner'>Other Information <a href='https://www.urhired.co/jobseekers/jobseeker_info/4'><img id='other_info_edit' src='https://www.urhired.co/assets/images/edit.png' width='15' height='15' border='0' alt='U R Hired' ></a></div></div>      </div>
+      <div id="right_panel">
+        <div class='text-center'><h2>Let's complete your profile!</h2></div><div id='flash_msg'class='' role='alert'><p><div class="alert alert-success" role="alert">Other Information Updated Successfully!</div></p></div>
+        <div id='personal_detail' class='user-info-content-area hide'><div class='title-bar'><div>Update your Personal Detail</div></div><form id='frm_personel_info' action='https://www.urhired.co/jobseekers/add_personal_info' method='POST'><div class='user-info-box'><label for='profile_headline'>Please give a kick ass headline for your profile. Imagine your 140 character twitter headline!!</label><textarea id='profile_headline' name='profile_headline' cols='75' rows='6'></textarea><div class='sides'><div class='label_container'><label for='name'>Name:</label></div><div class='input_container'><input type='text' name='candidate_name' id='candidate_name' value='Amanti Dutta' class='read-only-txtbox' readonly></div></div><br><div class='sides'><div class='label_container'><label for='email'>Email:</label></div><div class='input_container'><input type='text' name='candidate_email' id='candidate_email' value='amanati@gmail.com'  class='read-only-txtbox' readonly></div></div><br><div class='sides'><div class='label_container'><label for='candidate_number'>Mobile:<super>*</super></label></div><div class='input_container'><input type='text' name='candidate_number' id='candidate_number' maxlength='10' value=''><div id='candidate_number_err' class='error-txt hide'>Please enter mobile Number</div></div></div><br><div class='sides'><div class='label_container'><label for='gender'>Gender:</label></div><div class='input_container'><select name='candidate_gender' id='candidate_gender'><option value='MALE'>Male</option><option value='FEMALE'>Female</option></select></div></div><br><div class='sides'><div class='label_container'><label for='location'>Location:</label></div><div class='input_container'><select name='candidate_location' id='candidate_location'><option value=''>Select</option><option value='Bangaluru' >Bangaluru</option><option value='Gurgaon'>Gurgaon</option><option value='Delhi/NCR'>Delhi/NCR</option><option value='Noida'>Noida</option><option value='Kolkata'>Kolkata</option><option value='Mumbai'>Mumbai</option><option value='Pune'>Pune</option><option value='Hyderabad'>Hyderabad</option><option value='Chennai'>Chennai</option><option value='Other'>Other</option></select><div id='candidate_location_err' class='error-txt hide'>Please Select Your Location</div></div></div><br><div id='personel_btn_container' class='save_bttn'><input type='submit' value='Modify Personal Information' name='personal_detail_btn' id='personal_modify_btn' class='btn btn-success'></div><br><div id='loader_personal' class='loader-user-info'><img src='./img/loader2.gif'></div></div></form></div><div id='professional_detail' class='user-info-content-area hide'><div id='last_job_msg' class='alert alert-success hide'></div><div class='title-bar'><div>Update your Professional Detail</div></div> <form id='frm_professional_info' action='https://www.urhired.co/jobseekers/add_proff_info' method='POST'><div class='user-info-box'><div class='sides'><div class='label_container'><label for='work_expr'>Total Work Experience:<super>*</super></label></div><div class='input_container'><input type='text' name='work_expr' id='work_expr' maxlength='3' value=''> Years <div id='work_expr_err' class='error-txt hide'>Please enter your work experience</div></div></div><br><fieldset style='margin-top:20px;'><legend id='current_job_status'>Enter details of your current job:</legend><div class='pull-right' data-toggle='modal' data-target='#previous_job_modal' data-backdrop='static' style='cursor:pointer;' alt='One by one add details of all previous employeer(s)' title='One by one add details of all previous employeer(s)'>+ Add Previous job(s)</div><br><div class='sides'><div class='label_container'><label for='industry'>Industry:<super>*</super></label></div>  <div class='input_container'><select name='industry' id='industry'><option value=''>Select</option><option value='4'>BPO</option><option value='6'>Construction / Engineering / Cement / Metals</option><option value='7'>Consumer Durables</option><option value='10'>FMCG/Food/Beverages</option><option value='13'>IT Software</option><option value='14'>IT Hardware</option><option value='16'>KPO/Research & Analytics</option><option value='19'>Internet/Ecommerce</option><option value='26'>Strategy /Management Consulting Firms</option><option value='27'>Textiles / Garments / Accessories</option><option value='28'>Information Technology</option><option value='29'>Software Application/Web Development</option><option value='30'>Accounts</option><option value='31'>Medical & Healthcare</option></select><div id='industry_err' class='error-txt hide'>Please select an industry</div></div></div><br><div class='sides'><div class='label_container'><label for='functions'>Functions:<super>*</super></label></div><div class='input_container'><select name='functions' id='functions'><option value=''>Select</option><option value='1'>Accounting / Tax / Company Secretary / Audit</option><option value='2'>Analytics & Business Intelligence</option><option value='4'>Corporate Planning / Consulting / Strategy</option><option value='5'>Entrepreneur / Businessman / Outside Management Consultant</option><option value='7'>HR / Admin / PM / IR / Training</option><option value='8'>ITES / BPO / Operations </option><option value='10'>Medical Professional / Healthcare Practitioner / Technician</option><option value='11'>Mktg / Advtg  Media Planning / PR / Corp. Comm</option><option value='12'>R&D / Engineering Design</option><option value='13'>Sales / Business Development / Client Servicing</option><option value='14'>Software Development - ALL</option><option value='15'>Software Development - Application Programming</option><option value='16'>Software Development - Client Server</option><option value='17'>Software Development - Database Administration</option><option value='18'>
+Software Development - e-commerce / Internet Technologies
+</option><option value='19'>Software Development - Embedded Technologies</option><option value='20'>Software Development - ERP / CRM</option><option value='21'>Software Development - Network Administration</option><option value='24'>Top Management</option><option value='25'>Others</option><option value='26'>Customer Relation Management</option><option value='27'>Finance & Accounting Operations </option></select><div id='functions_err' class='error-txt hide'>Please select your function/specilization</div></div></div><br><div class='sides'><div class='label_container'><label for='organization'>Organization:<super>*</super></label></div><div class='input_container'><input type='text' name='organization' id='organization' value=''><div id='organization_err' class='error-txt hide'>Enter name of your organization</div></div></div><br><div class='sides'><div class='label_container'><label for='designation'>Designation:<super>*</super></label></div> <div class='input_container'><input type='text' name='designation' id='designation' value=''><div id='designation_err' class='error-txt hide'>Enter your designation.</div></div></div><br><div class='sides'><div class='label_container'><label for='responsibility'>Responsibilities:</label></div><div class='input_container'><textarea name='responsibilities' id='responsibilities'></textarea></div></div><br><div class='sides'><div class='label_container'><label for='joining_date'>Joining Date:<super>*</super></label></div><div class='input_container'><input type='month' name='joining_date' id='joining_date' value=''><div id='joining_date_err' class='error-txt hide'>Enter your proper joining date.</div></div></div><br><div class='sides'><div class='label_container'><label for='releaving_date'>Releaving Date:<super>*</super></label></div><div class='input_container'><input type='month' name='releaving_date' id='releaving_date' disabled>&nbsp;&nbsp;&nbsp;<input type='checkbox' value='still working' name='working_with_current_org' id='working_with_current_org' checked>&nbsp;Still Working.</div></div><br><div class='sides'><div class='label_container'><label for='summary'>Summary:</label></div><div class='input_container'><textarea name='summary' id='summary'></textarea></div></div><br><div id='professional_btn_container' class='save_bttn'><input type='submit' value='Modify Professional Information' name='proff_detail_btn' id='professional_modify_btn' class='btn btn-success'></div><br></fieldset><div id='loader_proff' class='loader-user-info'><img src='./img/loader2.gif'></div></div></form></div><div id='educational_detail' class='user-info-content-area hide'><div class='title-bar'><div>Update your Educational Detail</div></div><form id='frm_educational_info' action='https://www.urhired.co/jobseekers/add_education_info' method='POST'><div class='user-info-box'><div class='sides'><div class='label_container'><label for='school_name'>School Name:</label></div><div class='input_container'><input type='text' name='school_name' id='school_name' value=''></div></div><br><div class='sides'><div class='label_container'><label for='schooling_date'>Date/Year:</label></div><div class='input_container'><input type='month' name='schooling_date' id='schooling_date' value=''></div></div><br><div class='sides'><div class='label_container'><label for='degree'>Degree:</label></div><div class='input_container'> <input type='text' name='degree' id='degree' value=''>  </div></div><br><div class='sides'><div class='label_container'><label for='study'>Study:</label></div><div class='input_container'><input type='text' name='study' id='study' value=''></div></div><br><div id='educational_btn_container' class='save_bttn'> <input type='submit' value='Modify Educational Information' name='edu_detail_btn' id='educational_modify_btn' class='btn btn-success'></div><br><div id='loader_edu' class='loader-user-info'><img src='./img/loader2.gif'> </div></div></form></div><div id='other_detail' class='user-info-content-area hide'><div class='title-bar'><div>Update your Other Detail</div></div><form id='frm_other_info' action='https://www.urhired.co/jobseekers/add_other_info' method='POST'><div class='user-info-box'><div class='sides'><div class='label_container'><label for='achivement'>Other Achivement:</label></div><div class='input_container'><textarea rows='4' cols='30' name='other_achivement' id='other_achivement'></textarea></div></div><div class='sides'><div class='label_container'><label for='passion'>What you are passionate of:</label></div><div class='input_container'><textarea rows='4' cols='30' name='passion' id='passion'></textarea></div></div><div id='otherinfo_btn_container' class='save_bttn'> <input type='submit' value='Modify Other Information' name='other_detail_btn' id='other_modify_btn' class='btn btn-success'></div><div id='loader_other' class='loader-user-info'><img src='./img/loader2.gif'> </div></div></form></div><div id='upload_resume_detail' class='user-info-content-area'><div class='title-bar'><div>Upload Your updated Resume</div></div><form id='frm_upload' action='https://www.urhired.co/jobseekers/uploadUserDoc' method='POST' enctype='multipart/form-data'><div class='user-info-box'><div class='sides'><div class='label_container'><label for='change_reason'>Upload Resume:<super>*</super></label></div><div class='input_container'><input type='file' name='candidate_resume' id='candidate_resume'><div class='hint-txt'>(Use .doc/.docx/.pdf file only)</div></div></div><br><br><div class='sides'><div class='label_container'><label for='achivement'>Upload Your Picture:</label></div><div class='input_container'><input type='file' name='candidate_pict' id='candidate_pict'><div class='hint-txt'>(Use .jpg/.jpeg/.png/.gif file only)</div></div></div><br><br><div class='save_bttn'><input type="hidden" name="action" value="send"> <input type='submit' value='Click to Upload' name='upload_btn' id='upload_btn' class='btn btn-success'></div><div id='loader_upload' class='loader-user-info'><img src='./img/loader2.gif'> </div></div></form></div>        <!-- Modal for previous jobs -->
+        <div class="modal fade" id="previous_job_modal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter details of your previous job</h4>
+              </div>
+              <form id='previous_job' action='https://www.urhired.co/jobseekers/add_prev_job' method='POST'>
+              <div class="modal-body">
+                <div id="prev_jobs_err" class="alert alert-danger hide"></div>
+                <div class="form-group">
+                  <label for="industry_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Industry</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <select name="industry_1" id="industry_1" class="form-control" required="">
+                      <option value="">Select</option>
+                      <option value='4'>BPO</option><option value='6'>Construction / Engineering / Cement / Metals</option><option value='7'>Consumer Durables</option><option value='10'>FMCG/Food/Beverages</option><option value='13'>IT Software</option><option value='14'>IT Hardware</option><option value='16'>KPO/Research & Analytics</option><option value='19'>Internet/Ecommerce</option><option value='26'>Strategy /Management Consulting Firms</option><option value='27'>Textiles / Garments / Accessories</option><option value='28'>Information Technology</option><option value='29'>Software Application/Web Development</option><option value='30'>Accounts</option><option value='31'>Medical & Healthcare</option>                    </select>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="function_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Function</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <select name="function_1" id="function_1" class="form-control" required="">
+                      <option value="">Select</option>
+                      <option value='1'>Accounting / Tax / Company Secretary / Audit</option><option value='2'>Analytics & Business Intelligence</option><option value='4'>Corporate Planning / Consulting / Strategy</option><option value='5'>Entrepreneur / Businessman / Outside Management Consultant</option><option value='7'>HR / Admin / PM / IR / Training</option><option value='8'>ITES / BPO / Operations </option><option value='10'>Medical Professional / Healthcare Practitioner / Technician</option><option value='11'>Mktg / Advtg  Media Planning / PR / Corp. Comm</option><option value='12'>R&D / Engineering Design</option><option value='13'>Sales / Business Development / Client Servicing</option><option value='14'>Software Development - ALL</option><option value='15'>Software Development - Application Programming</option><option value='16'>Software Development - Client Server</option><option value='17'>Software Development - Database Administration</option><option value='18'>
+Software Development - e-commerce / Internet Technologies
+</option><option value='19'>Software Development - Embedded Technologies</option><option value='20'>Software Development - ERP / CRM</option><option value='21'>Software Development - Network Administration</option><option value='24'>Top Management</option><option value='25'>Others</option><option value='26'>Customer Relation Management</option><option value='27'>Finance & Accounting Operations </option>                    </select>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="organization_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Organization</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <input type="text" name="organization_1" id="organization_1" class="form-control" required>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="designation_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Designation</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <input type="text" name="designation_1" id="designation_1" class="form-control" required>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="responsibilities_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Responsibilities</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <textarea id="responsibilities_1" name="responsibilities_1" class="form-control"></textarea>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="joining_date_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Joining Date</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <input type="month" name="joining_date_1" id="joining_date_1" required>
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="releaving_date_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Releaving Date</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <input type="month" name="releaving_date_1" id="releaving_date_1" required>
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="summary_1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Summary</label>
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <textarea name="summary_1" id="summary_1" class="form-control"></textarea>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-group">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <input type="submit" class="btn btn-primary" id="add_prev_job_1" name="add_prev_job_1" value="Add Previous Job" />
+                    <!--data-dismiss="modal"-->
+                  </div>
+                </div>
+                <div id="prev_job_loader" class="loader-user-info"> <img src="https://www.urhired.co/assets/images/loader.GIF"> </div>
+                <br>
+                <br>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- previous_job_modal -->
+
+      </div>
+      <!-- right panel -->
+    </div>
+    <!--user_info_parent -->
+  </div>
+</div>
+<script src="https://www.urhired.co/assets/js/jquery.validate.js"></script>
+<script>
+setTimeout(function () {
+          $("#flash_msg").hide(700);
+          }, 3500);
+
+$(document).ready(function () {
+
+		$('#frm_personel_info').submit(function () {
+			var errorFlag = false;
+			if ($("#candidate_number").val() === ""  || ( isNaN($("#candidate_number").val()) || $("#candidate_number").val().length<10 )) {
+                $("#candidate_number_err").removeClass("hide");
+                $("#candidate_number").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#candidate_number_err").addClass("hide");
+                $("#candidate_number").css("border", "1px solid #f0f0f0");
+            }
+
+			if ($("#candidate_location").val() === "") {
+                $("#candidate_location_err").removeClass("hide");
+                $("#candidate_location").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#candidate_location_err").addClass("hide");
+                $("#candidate_location").css("border", "1px solid #f0f0f0");
+            }
+
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+
+		});
+		$('#frm_professional_info').submit(function () {
+            var errorFlag = false;
+            if ($("#industry").val() === "") {
+                $("#industry_err").removeClass("hide");
+                $("#industry").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#industry_err").addClass("hide");
+                $("#industry").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#functions").val() === "") {
+                $("#functions_err").removeClass("hide");
+                $("#functions").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#functions_err").addClass("hide");
+                $("#functions").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#work_expr").val() === ""  || isNaN($("#work_expr").val()) ) {
+                $("#work_expr_err").removeClass("hide");
+                $("#work_expr").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#work_expr_err").addClass("hide");
+                $("#work_expr").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#organization").val() === "") {
+                $("#organization_err").removeClass("hide");
+                $("#organization").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#organization_err").addClass("hide");
+                $("#organization").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#designation").val() === "") {
+                $("#designation_err").removeClass("hide");
+                $("#designation").css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#designation_err").addClass("hide");
+                $("#designation").css("border", "1px solid #f0f0f0");
+            }
+
+            if ($("#joining_date").val() === "") {
+                $("#joining_date_err").removeClass("hide");
+                $("#joining_date").next().css("border", "1px solid red");
+                errorFlag = true;
+            } else {
+                $("#joining_date_err").addClass("hide");
+                $("#joining_date").next().css("border", "1px solid #f0f0f0");
+            }
+
+			if ($("#releaving_date").val()!="" && ($("#releaving_date").val() < $("#joining_date").val())){
+				$("#joining_date_err").removeClass("hide");
+                $("#joining_date").next().css("border", "1px solid red");
+                errorFlag = true;
+			} else{
+				$("#joining_date_err").addClass("hide");
+                $("#joining_date").next().css("border", "1px solid #f0f0f0");
+			}
+
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+		$('#add_prev_job_1').click(function () {
+            var errorMsg = new Array();
+            if ($("#industry_1").val() === "") {
+                errorMsg.push("Select Industry of your job!");
+            }
+            if ($("#function_1").val() === "") {
+                errorMsg.push("Select function of your job!");
+            }
+            if ($("#organization_1").val() === "") {
+                errorMsg.push("Put name of your previous organization!");
+            }
+            if ($("#designation_1").val() === "") {
+                errorMsg.push("Write about your designation in your previous organization!");
+            }
+            if ($("#joining_date_1").val() === "") {
+                errorMsg.push("Enter date of joining!");
+            }
+            if ($("#releaving_date_1").val() === "") {
+                errorMsg.push("Enter date of releaving!");
+            }
+			if($("#releaving_date_1").val() < $("#joining_date_1").val()){
+				errorMsg.push("Enter proper date of releaving!");
+			}
+            if (errorMsg.length > 0) {
+                $("#prev_jobs_err").html(" ");
+                $("#prev_jobs_err").removeClass("hide");
+                for (var i = 0; i < errorMsg.length; i++) {
+                    $("#prev_jobs_err").append(errorMsg[i] + "<br>");
+                }
+                return false;
+            } else {
+                return true;
+            }
+        });
+		$('#frm_upload').submit(function(){
+			var errorFlag = false;
+			if ($("#hide_personal_info").val() === "") {
+                alert('please provide your Mobile No. and Location');
+			    errorFlag = true;
+            }
+			if ($("#hide_proff_info").val() < 1) {
+                alert('please provide your proper Professional details');
+                errorFlag = true;
+            }
+			/*if ($("#hide_edu_info").val() < 1) {
+                alert('please provide your proper Educational details');
+                errorFlag = true;
+            }
+			if ($("#hide_other_info").val() < 1) {
+                alert('please provide your proper Other details');
+                errorFlag = true;
+            }*/
+            if (errorFlag === true) {
+                return false;
+            } else {
+                return true;
+            }
+
+		});
+
+        $('#working_with_current_org').change(function () {
+            var current_job_status = $("#working_with_current_org").is(':checked');
+            //alert(current_job_status);
+            if (current_job_status === true) {
+                $("#releaving_date").val("");
+                $("#releaving_date").attr("disabled", true);
+            } else {
+                $("#releaving_date").removeAttr("disabled");
+            }
+        });
+     });
+</script>
+
+
+
+{% endblock %}

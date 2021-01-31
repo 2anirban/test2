@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
+
+{% block content %}
+
+<hr class="green">
+    <div class="container">
+   	  <div class="jobseekers">
+      	<h1>Headhunters</h1>
+        
+        <div class="row">
+             <div class="modal fade" id="forgot_password_modal" role="dialog">
+          <div class="modal-dialog"> 
+            
+            <!-- Modal content-->
+            <form name="frm_forgot_password" class="form-horizontal" method="post" action="https://www.urhired.co/home/forgot_password" role="form">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Forgot Password ? Give your valid Email id for new one</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="Email_id" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">Email Id:</label>
+                        <input type="email" class="" id="email" name="email" placeholder="Email*">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button type="submit" name="forgot_btn" id="forgot_btn"  value="Submit" class="btn btn-default">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        	<div class="col-md-6 col-sm-6">
+            	<h2>Sign up as Headhunter</h2>
+                <form role="form" id="signupForm" method="post" action="https://www.urhired.co/recruiters/recruiter_register">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name*">
+                    <p>What mother calls you!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name*">
+                    <p>What colegues call you. Well at times!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email*">
+                    <p>It's also sign in name. has to be legit!</p>
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Password*">
+                    <p>Something you'll remember but hard to guess;</p>
+                  </div>
+                   <div class="form-group">
+                    <input type="password" class="form-control" id="conf_pass" name="conf_pass" placeholder="Retype Password*">
+                    <p>Type it again; Think of it as game!</p>
+                  </div>
+                  <button type="submit" name="submit" value="register" class="btn btn-success">Register Now</button>
+                </form>
+            </div>
+            <div class="col-md-6 col-sm-6">
+            	<div class="login-area">
+                	<h3>Login as Headhunter</h3>
+                     <form role="form" action="https://www.urhired.co/recruiters/login" method="post">
+                      <div class="form-group">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email*">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password*">
+                      </div>
+                      <div class="row">
+                      	<div class="col-md-6 col-sm-6">
+                        	<a href="#" data-toggle="modal" data-target="#forgot_password_modal"  style="color:white"; }>Forgot password ?</a>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                        	<button type="submit" name="submit" value="login" class="btn btn-default">Log in Now</button>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+{% endblock %}

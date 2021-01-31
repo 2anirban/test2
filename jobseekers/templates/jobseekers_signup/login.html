@@ -1,0 +1,23 @@
+<h1>Login Page</h1>
+{% if error %}
+
+{{ error }}
+
+{% endif %}
+
+<form method="POST" action="{% url 'jseek_login' %}">
+    {% csrf_token %}
+    Email:
+    <br/>
+    <input type="text" name="email" />
+    <br/>
+    Password:
+    <input type="password" name="password" />
+    <br/>
+
+
+    <input type="submit" value="login">
+
+</form>
+
+
